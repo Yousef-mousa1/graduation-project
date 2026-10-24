@@ -1,0 +1,220 @@
+<main class="landing">
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-glow"></div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="pill"><span class="pill-dot"></span>Autonomous Threat Intelligence</span>
+
+        <h1 class="display">Your AI Security Assistant</h1>
+        <p class="lead">
+          Check data breaches, analyze suspicious messages, links, and files, and build stronger
+          passwords, all in one seamless enterprise-grade chat.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" routerLink="/register">
+            Get Started
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.arrow" /></svg>
+          </a>
+          <a class="btn btn-secondary" routerLink="/" fragment="how-it-works">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.play" /></svg>
+            See How It Works
+          </a>
+        </div>
+
+        <ul class="trust">
+          @for (t of trust; track t.title) {
+            <li>
+              <span class="h4">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="t.icon" /></svg>
+                {{ t.title }}
+              </span>
+              <span class="caption text-muted">{{ t.note }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Static picture of a chat. Not interactive on purpose. -->
+      <div class="mock" aria-hidden="true" inert>
+        <div class="mock-top">
+          <div class="mock-id">
+            <span class="ping"></span>
+            <div>
+              <div class="label">SecureIQ Sentinel</div>
+              <div class="micro accent">Active Engine v4.2</div>
+            </div>
+          </div>
+          <span class="enclave micro">
+            <svg class="ic" viewBox="0 0 24 24"><path [attr.d]="icons.lock" /></svg>
+            Enclave Protected
+          </span>
+        </div>
+
+        <div class="chat">
+          <div class="msg user">
+            <div class="bubble">
+              Can you analyze this suspicious SMS:
+              <code class="orange">"Your USPS package is pending delivery: http://pkg-track-alert82.net"</code>?
+            </div>
+            <span class="meta micro">11:42 AM • Security Analyst</span>
+          </div>
+
+          <div class="msg bot">
+            <div class="bubble">
+              <div class="row">
+                <span class="h4 danger">
+                  <svg class="ic" viewBox="0 0 24 24"><path [attr.d]="icons.warning" /></svg>
+                  Threat Detected
+                </span>
+                <span class="tag tag-danger">High risk phishing</span>
+              </div>
+              <p class="body-sm bot-text">
+                Domain registered 48 hours ago via anonymous registrar. Structural telemetry confirms
+                credential harvesting targeting mobile sessions. <span class="danger">Do NOT open.</span>
+              </p>
+              <div class="remedy">
+                <span class="caption text-muted">
+                  <svg class="ic" viewBox="0 0 24 24"><path [attr.d]="icons.shieldCheck" /></svg>
+                  Remediation: Block sender &amp; report to 7726
+                </span>
+                <span class="apply micro">Apply Rule</span>
+              </div>
+            </div>
+            <span class="meta micro">
+              <svg class="ic" viewBox="0 0 24 24"><path [attr.d]="icons.sparkle" /></svg>
+              Sentinel AI • Confirmed Heuristic
+            </span>
+          </div>
+
+          <div class="msg user">
+            <div class="bubble">
+              Check my corporate identity for known dumps:
+              <code class="mono teal">alex&#64;techcorp.io</code>
+            </div>
+            <span class="meta micro">11:43 AM</span>
+          </div>
+
+          <div class="msg bot">
+            <div class="bubble">
+              <div class="row">
+                <span class="h4 accent">
+                  <svg class="ic" viewBox="0 0 24 24"><path [attr.d]="icons.checkCircle" /></svg>
+                  Breach Audit Complete
+                </span>
+                <span class="tag tag-ok">Clean status</span>
+              </div>
+              <p class="body-sm bot-text">
+                Evaluated against 14.8 Billion verified compromise records across Dark Web monitors.
+                Zero active compromises detected.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="prompt">
+          <svg class="ic prompt-ic" viewBox="0 0 24 24"><path [attr.d]="icons.terminal" /></svg>
+          <span class="prompt-text">Paste suspicious SMS, URL, domain, or drop payload...</span>
+          <span class="send">
+            <svg class="ic" viewBox="0 0 24 24"><path [attr.d]="icons.send" /></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="features" id="features">
+    <div class="container stack">
+      <header class="section-header">
+        <span class="eyebrow">Autonomous Defense Matrix</span>
+        <h2 class="h2">Everything You Need to Stay Safe</h2>
+        <p>
+          Comprehensive threat prevention and automated forensics powered by security-tuned
+          intelligence models.
+        </p>
+      </header>
+
+      <div class="cards-3">
+        @for (f of features; track f.title) {
+          <article class="card feature tone-{{ f.tone }}">
+            <div class="feature-body">
+              <span class="icon-box">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="f.icon" /></svg>
+              </span>
+              <div class="title-row">
+                <h3 class="h3">{{ f.title }}</h3>
+                <span class="chip tone-text">{{ f.chip }}</span>
+              </div>
+              <p class="body-sm text-muted">{{ f.text }}</p>
+            </div>
+
+            <div class="panel">
+              <div class="row">
+                <span class="micro text-muted">{{ f.panelLabel }}</span>
+                <span class="micro mono bold tone-text">{{ f.panelValue }}</span>
+              </div>
+              @if (f.bar) {
+                <div class="bar"><span [style.width.%]="f.bar"></span></div>
+              } @else {
+                <div class="segs"><span></span><span></span><span class="dim"></span></div>
+              }
+              <span class="caption text-muted foot">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="f.footIcon" /></svg>
+                {{ f.foot }}
+              </span>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how-it-works">
+    <div class="container stack stack-sm">
+      <header class="section-header">
+        <span class="eyebrow">Streamlined Workflow</span>
+        <h2 class="h2">How It Works</h2>
+        <p>
+          Neutralize potential security breaches in under ten seconds through direct natural
+          language interaction.
+        </p>
+      </header>
+
+      <div class="cards-3 steps">
+        @for (s of steps; track s.num) {
+          <article class="card step tone-{{ s.tone }}">
+            <div>
+              <div class="row">
+                <span class="step-num tone-text">{{ s.num }}</span>
+                <svg class="ic step-ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="s.icon" /></svg>
+              </div>
+              <h3 class="h3">{{ s.title }}</h3>
+              <p class="body-sm text-muted">{{ s.text }}</p>
+            </div>
+            <div class="step-foot micro text-muted">
+              <span class="dot"></span>{{ s.foot }}
+            </div>
+          </article>
+        }
+      </div>
+
+      <div class="banner">
+        <div class="banner-id">
+          <span class="banner-ic">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.activity" /></svg>
+          </span>
+          <div>
+            <div class="h4">Global Threat Network Active</div>
+            <div class="caption text-muted">
+              Over 124,000 deceptive vectors countered across our enterprise cluster this week.
+            </div>
+          </div>
+        </div>
+        <a class="btn btn-primary btn-sm" routerLink="/register">Launch Assistant Free</a>
+      </div>
+    </div>
+  </section>
+</main>

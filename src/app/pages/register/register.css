@@ -1,0 +1,29 @@
+/* Uses tokens and form helpers from src/styles.css */
+
+:host {
+  display: block;
+}
+
+.agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-top: 4px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 16.5px;
+  letter-spacing: 0.12px;
+  cursor: pointer;
+}
+
+.agree input {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--primary);
+}
+
+.agree .link {
+  font-weight: 400;
+}

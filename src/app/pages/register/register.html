@@ -1,0 +1,75 @@
+<app-auth-layout heading="Create Your Account" subheading="Start protecting your digital identity">
+  <form class="form" (submit)="onSubmit($event)" novalidate>
+    <div class="field">
+      <label class="field-label" for="register-name">Full Name</label>
+      <div class="input-wrap">
+        <input
+          class="input"
+          id="register-name"
+          name="fullName"
+          type="text"
+          autocomplete="name"
+          placeholder="Alex Mercer"
+        />
+        <svg class="ic input-icon" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.user" /></svg>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="register-email">Email</label>
+      <div class="input-wrap">
+        <input
+          class="input"
+          id="register-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          placeholder="alex@example.com"
+        />
+        <svg class="ic input-icon" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.mail" /></svg>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="register-password">Password</label>
+      <app-password-input
+        inputId="register-password"
+        name="password"
+        autocomplete="new-password"
+        placeholder="••••••••••••"
+      />
+      <p class="field-hint">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.info" /></svg>
+        Use 8+ characters with letters, numbers &amp; symbols
+      </p>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="register-confirm">Confirm Password</label>
+      <app-password-input
+        inputId="register-confirm"
+        name="confirmPassword"
+        autocomplete="new-password"
+        placeholder="••••••••••••"
+      />
+    </div>
+
+    <label class="agree">
+      <input type="checkbox" name="terms" />
+      <span>
+        I agree to the <a class="link" href="#">Terms</a> &amp;
+        <a class="link" href="#">Privacy Policy</a>
+      </span>
+    </label>
+
+    <button class="btn btn-primary btn-lg btn-block" type="submit">
+      Create Account
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.arrow" /></svg>
+    </button>
+  </form>
+
+  <p authFooter>
+    Already have an account?
+    <a class="link" routerLink="/login">Sign In</a>
+  </p>
+</app-auth-layout>

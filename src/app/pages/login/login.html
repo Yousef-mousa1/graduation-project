@@ -1,0 +1,49 @@
+<app-auth-layout heading="Welcome Back" subheading="Sign in to continue to SecureIQ">
+  <form class="form" (submit)="onSubmit($event)" novalidate>
+    <div class="field">
+      <label class="field-label" for="login-email">Email</label>
+      <div class="input-wrap">
+        <input
+          class="input"
+          id="login-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          placeholder="alex@example.com"
+        />
+        <svg class="ic input-icon" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.mail" /></svg>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-row">
+        <label class="field-label" for="login-password">Password</label>
+        <a class="link micro" routerLink="/forgot-password">Forgot Password?</a>
+      </div>
+      <app-password-input inputId="login-password" name="password" />
+    </div>
+
+    <button class="btn btn-primary btn-lg btn-block" type="submit">
+      Sign In
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.arrow" /></svg>
+    </button>
+  </form>
+
+  <div class="divider"><span class="micro">Or continue with</span></div>
+
+  <div class="social">
+    <button class="social-btn" type="button">
+      <img src="/icons/google.svg" alt="" width="16" height="16" />
+      Google
+    </button>
+    <button class="social-btn" type="button">
+      <img src="/icons/apple.svg" alt="" width="16" height="16" />
+      Apple
+    </button>
+  </div>
+
+  <p authFooter>
+    Don't have an account?
+    <a class="link" routerLink="/register">Sign Up</a>
+  </p>
+</app-auth-layout>

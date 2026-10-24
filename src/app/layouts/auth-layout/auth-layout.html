@@ -1,0 +1,65 @@
+<div class="auth">
+  <aside class="panel">
+    <header class="panel-top">
+      <a class="brand" routerLink="/" aria-label="SecureIQ home">
+        <span class="brand-mark">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.shield" /></svg>
+        </span>
+        <span>
+          <span class="brand-name">SecureIQ</span>
+          <span class="brand-sub">Defense Cloud</span>
+        </span>
+      </a>
+      <span class="badge micro"><span class="dot"></span>SOC-2 Type II Ready</span>
+    </header>
+
+    <div class="panel-body">
+      <span class="tag">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.shieldCheck" /></svg>
+        SecOps Intelligence Suite
+      </span>
+      <h1 class="headline">Stay One Step Ahead</h1>
+      <p class="lead">
+        Enterprise-grade threat intelligence and leak prevention at your fingertips.
+      </p>
+      <ul class="points">
+        @for (point of points; track point) {
+          <li>
+            <span class="tick">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.check" /></svg>
+            </span>
+            {{ point }}
+          </li>
+        }
+      </ul>
+    </div>
+
+    <footer class="panel-foot">
+      <p class="caption">© {{ year }} SecureIQ Inc. All rights reserved.</p>
+      <nav class="micro" aria-label="Legal">
+        <a href="#">Privacy</a>
+        <span aria-hidden="true">•</span>
+        <a href="#">Compliance</a>
+      </nav>
+    </footer>
+  </aside>
+
+  <main class="stage">
+    <section class="sheet">
+      @if (heading()) {
+        <header class="sheet-head">
+          <h2 class="sheet-title">{{ heading() }}</h2>
+          @if (subheading()) {
+            <p class="body-sm text-muted">{{ subheading() }}</p>
+          }
+        </header>
+      }
+
+      <ng-content />
+
+      <footer class="sheet-foot body-sm text-muted">
+        <ng-content select="[authFooter]" />
+      </footer>
+    </section>
+  </main>
+</div>

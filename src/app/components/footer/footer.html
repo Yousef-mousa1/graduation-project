@@ -1,0 +1,16 @@
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="brand">
+      <img src="/favicon.png" alt="" width="24" height="24" />
+      <p class="caption copyright">© {{ year }} SecureIQ. All rights reserved.</p>
+    </div>
+
+    <nav aria-label="Footer">
+      <ul class="links">
+        @for (link of links; track link.label) {
+          <li><a class="micro" [href]="link.href">{{ link.label }}</a></li>
+        }
+      </ul>
+    </nav>
+  </div>
+</footer>

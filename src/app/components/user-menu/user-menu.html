@@ -1,0 +1,42 @@
+<button
+  class="trigger"
+  type="button"
+  aria-haspopup="menu"
+  [attr.aria-expanded]="open()"
+  (click)="toggle()"
+>
+  <span class="avatar">
+    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.user" /></svg>
+  </span>
+  <span class="name">{{ user().name }}</span>
+  <svg class="ic chevron" [class.flipped]="open()" viewBox="0 0 24 24" aria-hidden="true">
+    <path [attr.d]="icons.chevronDown" />
+  </svg>
+</button>
+
+@if (open()) {
+  <div class="menu" role="menu">
+    <div class="identity">
+      <p class="identity-name">{{ user().name }}</p>
+      <p class="caption text-muted">{{ user().email }}</p>
+    </div>
+
+    <hr class="divider" />
+
+    <a class="item" role="menuitem" routerLink="/account" (click)="close()">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.user" /></svg>
+      Account Settings
+    </a>
+    <button class="item" type="button" role="menuitem" (click)="close()">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.key" /></svg>
+      API Access Keys
+    </button>
+
+    <hr class="divider" />
+
+    <a class="item danger" role="menuitem" routerLink="/login" (click)="close()">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.logOut" /></svg>
+      Log Out
+    </a>
+  </div>
+}

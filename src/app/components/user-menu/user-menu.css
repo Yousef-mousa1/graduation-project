@@ -1,0 +1,107 @@
+/* Uses tokens and helpers (.ic, .caption, .text-muted) from src/styles.css */
+
+:host {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px;
+  border-radius: var(--radius-md);
+  transition: background-color 0.15s ease;
+}
+
+.trigger:hover {
+  background: var(--surface-2);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--primary-light);
+  color: var(--on-primary);
+  font-size: 14px;
+}
+
+.name {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  letter-spacing: 0.13px;
+}
+
+.chevron {
+  color: var(--text-muted);
+  font-size: 12px;
+  transition: transform 0.15s ease;
+}
+
+.chevron.flipped {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 230px;
+  padding: 4px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-2xl);
+}
+
+.identity {
+  padding: 4px 8px;
+}
+
+.identity-name {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+  letter-spacing: 0.13px;
+}
+
+.divider {
+  height: 1px;
+  margin: 4px 0;
+  border: 0;
+  background: var(--surface-4);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  letter-spacing: 0.13px;
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.item:hover {
+  background: var(--surface-2);
+}
+
+.item .ic {
+  font-size: 13px;
+}
+
+.danger {
+  color: var(--danger);
+}

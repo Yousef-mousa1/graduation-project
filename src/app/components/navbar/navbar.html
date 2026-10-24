@@ -1,0 +1,22 @@
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a class="brand" routerLink="/" aria-label="SecureIQ home">
+      <img src="/favicon.png" alt="" width="32" height="32" />
+      <span class="brand-name">SecureIQ</span>
+    </a>
+
+    <nav class="sections" aria-label="Page sections">
+      @for (link of sections; track link.fragment) {
+        <a class="label" routerLink="/" [fragment]="link.fragment">{{ link.label }}</a>
+      }
+    </nav>
+
+    <div class="actions">
+      <a class="label login" routerLink="/login">Login</a>
+      <a class="btn btn-primary btn-sm" routerLink="/register">Get Started</a>
+      <span class="avatar" aria-hidden="true">
+        <svg class="ic" viewBox="0 0 24 24"><path [attr.d]="icons.user" /></svg>
+      </span>
+    </div>
+  </div>
+</header>

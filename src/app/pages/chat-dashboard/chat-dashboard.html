@@ -1,0 +1,85 @@
+<section class="chat">
+  <div class="scroll">
+    <div class="canvas">
+      <header class="status">
+        <span class="ping"></span>
+        <div>
+          <div class="status-title">
+            <h1 class="h4">SecureIQ Assistant</h1>
+            <span class="online">Online</span>
+          </div>
+          <p class="engine caption text-muted">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.shieldCheck" /></svg>
+            Autonomous SecOps Engine v4.2
+          </p>
+        </div>
+      </header>
+
+      <div class="session">
+        <div class="session-mode">
+          <span class="micro text-muted label-upper">Session mode</span>
+          <span class="mode">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.lock" /></svg>
+            Zero-Trust Ephemeral Sandboxing
+          </span>
+        </div>
+        <div class="session-meta micro text-muted">
+          <span>Nodes: 12 Active</span>
+          <span class="sep"></span>
+          <span>Latency: 18ms</span>
+        </div>
+      </div>
+
+      <article class="message">
+        <span class="bot-avatar">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.shield" /></svg>
+        </span>
+
+        <div class="message-col">
+          <div class="bubble">
+            <div class="bubble-head">
+              <span class="sender">SecureIQ Core</span>
+              <span class="caption text-muted">Just now</span>
+            </div>
+            <p class="lead">
+              Hi! Paste any text, link, or email, or upload a file, and I’ll analyze it for threats.
+            </p>
+            <p class="caption text-muted">
+              Automated heuristic validation checks payloads against known CVEs, malicious reputation
+              networks, and phishing zero-days.
+            </p>
+            <dl class="stats">
+              @for (stat of stats; track stat.label) {
+                <div class="stat">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="stat.icon" /></svg>
+                  <div>
+                    <dt class="micro text-muted label-upper">{{ stat.label }}</dt>
+                    <dd class="label">{{ stat.value }}</dd>
+                  </div>
+                </div>
+              }
+            </dl>
+          </div>
+
+          <ul class="actions">
+            @for (action of quickActions; track action.title) {
+              <li>
+                <button class="action" type="button">
+                  <span class="action-icon">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="action.icon" /></svg>
+                  </span>
+                  <span class="action-text">
+                    <span class="label">{{ action.title }}</span>
+                    <span class="micro text-muted">{{ action.hint }}</span>
+                  </span>
+                </button>
+              </li>
+            }
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <app-chat-composer />
+</section>

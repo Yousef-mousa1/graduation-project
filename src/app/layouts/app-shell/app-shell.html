@@ -1,0 +1,49 @@
+<div class="shell">
+  <aside class="sidebar">
+    <div class="sidebar-main">
+      <a class="brand" routerLink="/chat">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.shield" /></svg>
+        SecureIQ
+      </a>
+
+      <a class="new-chat" routerLink="/chat">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.plus" /></svg>
+        New Chat
+      </a>
+
+      <nav class="recent" aria-label="Recent chats">
+        <h2 class="recent-title">Recent</h2>
+        <ul>
+          @for (chat of recentChats; track chat.title) {
+            <li>
+              <button
+                class="chat-link"
+                type="button"
+                [class.active]="chat.active"
+                [attr.aria-current]="chat.active ? 'true' : null"
+              >
+                {{ chat.title }}
+              </button>
+            </li>
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <div class="sidebar-foot">
+      <a class="history-link" routerLink="/history">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.history" /></svg>
+        History
+      </a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <app-user-menu [user]="user" />
+    </header>
+    <main class="content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

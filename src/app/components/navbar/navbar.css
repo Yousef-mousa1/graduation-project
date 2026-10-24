@@ -1,0 +1,88 @@
+/* Uses tokens and helpers (.container, .label, .btn, .ic) from src/styles.css */
+
+:host {
+  display: block;
+}
+
+.navbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  padding-inline: 40px;
+  background: var(--header-bg);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: var(--header-height);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand img {
+  object-fit: contain;
+}
+
+.brand-name {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.sections {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.sections a,
+.login {
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.sections a:hover,
+.login:hover {
+  background: var(--surface-3);
+  color: var(--primary-light);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--primary-light);
+  color: var(--on-primary);
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding-inline: 0;
+  }
+
+  .sections,
+  .avatar {
+    display: none;
+  }
+}

@@ -1,0 +1,282 @@
+/* Uses tokens and helpers (.ic, .h4, .label, .micro, .caption, .text-muted) from src/styles.css */
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.canvas {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 960px;
+  margin-inline: auto;
+  padding: 8px 24px 24px;
+}
+
+.label-upper {
+  text-transform: uppercase;
+}
+
+/* ---------- Status ribbon ---------- */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 8px;
+}
+
+.ping {
+  position: relative;
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+}
+
+.ping::before,
+.ping::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  background: var(--primary-light);
+}
+
+.ping::before {
+  opacity: 0.75;
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.status-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.online {
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-tint-20);
+  color: var(--primary-light);
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 600;
+  letter-spacing: 0.275px;
+  text-transform: uppercase;
+}
+
+.engine {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ---------- Session bar ---------- */
+.session {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 4px 16px;
+  border-radius: var(--radius-lg);
+  background: rgba(10, 14, 23, 0.6);
+}
+
+.session-mode,
+.session-meta {
+  display: flex;
+  align-items: center;
+}
+
+.session-mode {
+  gap: 16px;
+}
+
+.mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-light);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.session-meta {
+  gap: 8px;
+}
+
+.sep {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--surface-4);
+}
+
+/* ---------- Welcome message ---------- */
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.bot-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  background: var(--violet-strong);
+  box-shadow: var(--shadow-md);
+  font-size: 18px;
+}
+
+.message-col {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  max-width: 672px;
+}
+
+.bubble {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--surface-3);
+  box-shadow: var(--shadow-lg);
+}
+
+.bubble::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--violet-strong);
+}
+
+.bubble-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sender {
+  color: var(--primary-light);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+  letter-spacing: 0.13px;
+}
+
+.lead {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 4px 0 0;
+  padding: 8px 10px 10px;
+  border-radius: var(--radius-md);
+  background: rgba(10, 14, 23, 0.4);
+}
+
+.stat {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  min-width: 140px;
+}
+
+.stat .ic {
+  color: var(--primary-light);
+  font-size: 13px;
+}
+
+.stat dd {
+  margin: 0;
+}
+
+/* ---------- Quick actions ---------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-2);
+  filter: drop-shadow(var(--shadow-sm));
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.action:hover {
+  background: var(--surface-3);
+}
+
+.action-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md);
+  background: var(--surface-4);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.action-text {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 640px) {
+  .canvas {
+    padding-inline: 16px;
+  }
+
+  .message {
+    gap: 12px;
+  }
+}

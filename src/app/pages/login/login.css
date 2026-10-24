@@ -1,0 +1,52 @@
+/* Uses tokens and form helpers from src/styles.css */
+
+:host {
+  display: block;
+}
+
+.divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 1px;
+  background: var(--border-soft);
+}
+
+.divider span {
+  position: relative;
+  padding-inline: 12px;
+  background: var(--surface);
+}
+
+.social {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 46px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.13px;
+  transition: background-color 0.15s ease;
+}
+
+.social-btn:hover {
+  background: var(--surface-2);
+}

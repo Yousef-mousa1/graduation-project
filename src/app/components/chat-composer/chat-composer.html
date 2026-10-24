@@ -1,0 +1,32 @@
+<div class="composer">
+  <form class="bar" (submit)="onSubmit($event)">
+    <button class="tool" type="button" aria-label="Attach a file">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.paperclip" /></svg>
+    </button>
+
+    <input
+      class="field"
+      type="text"
+      name="message"
+      autocomplete="off"
+      aria-label="Message"
+      placeholder="Paste text, a link, or ask anything..."
+    />
+
+    <div class="tools">
+      <button class="tool" type="button" aria-label="Voice input">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.mic" /></svg>
+      </button>
+      <button class="tool" type="button" aria-label="Security options">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.shield" /></svg>
+      </button>
+    </div>
+
+    <button class="send" type="submit">
+      Analyze
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.arrow" /></svg>
+    </button>
+  </form>
+
+  <p class="caption note">SecureIQ can make mistakes. Verify important results.</p>
+</div>
