@@ -8,7 +8,7 @@ export const PLACEHOLDER_USER: UserSummary = {
 };
 
 export const RECENT_CHATS: readonly ChatSummary[] = [
-  { title: 'Suspicious bank email', active: true },
+  { title: 'Suspicious bank email', path: '/chat' },
   { title: 'Password check' },
-  { title: 'invoice_urgent.pdf' },
+  { title: 'invoice_urgent.pdf', path: '/analysis' },
 ];

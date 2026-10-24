@@ -1,0 +1,234 @@
+<div class="account">
+  <header class="page-head">
+    <div class="titles">
+      <p class="eyebrow-row">
+        <span class="eyebrow">Security Settings</span>
+        <span class="sep"></span>
+        <span class="micro text-muted">SOC Tier 2 Access</span>
+      </p>
+      <h1 class="page-title">Account</h1>
+      <p class="body-sm text-muted">
+        Manage your identity, authentication credentials, and account lifecycle.
+      </p>
+    </div>
+    <span class="token micro"><span class="token-dot"></span>2FA Hardware Token Active</span>
+  </header>
+
+  <!-- Profile -->
+  <form class="panel" (submit)="onSubmit($event)" novalidate>
+    <header class="panel-head">
+      <div>
+        <h2 class="panel-title">Profile</h2>
+        <p class="caption text-muted">Personal information and contact identity.</p>
+      </div>
+      <span class="badge-chip label">UID: AM-9082-SEC</span>
+    </header>
+
+    <div class="avatar-row">
+      <div class="avatar-wrap">
+        <span class="avatar">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.user" /></svg>
+        </span>
+        <span class="avatar-badge">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.camera" /></svg>
+        </span>
+      </div>
+      <div class="avatar-actions">
+        <div class="btn-row">
+          <button class="tonal" type="button">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.camera" /></svg>
+            Change Photo
+          </button>
+          <button class="ghost" type="button">Remove</button>
+        </div>
+        <p class="caption text-muted">
+          Recommended format: SVG, PNG, or JPG up to 5MB. 400×400px minimum.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="stack">
+        <div class="field-row">
+          <label class="field-label" for="account-name">Full Name</label>
+          <span class="micro text-muted">Public alias</span>
+        </div>
+        <div class="input-wrap">
+          <input
+            class="input has-start"
+            id="account-name"
+            name="fullName"
+            type="text"
+            autocomplete="name"
+            value="Alex Mercer"
+          />
+          <svg class="ic input-icon start" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.user" /></svg>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="field-row">
+          <label class="field-label" for="account-email">Email Address</label>
+          <span class="accent-note micro">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.lock" /></svg>
+            Corporate SSO
+          </span>
+        </div>
+        <div class="input-wrap">
+          <input
+            class="input has-start"
+            id="account-email"
+            name="email"
+            type="email"
+            value="alex@example.com"
+            readonly
+          />
+          <svg class="ic input-icon start" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.mail" /></svg>
+          <svg class="ic input-icon" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.lock" /></svg>
+        </div>
+        <p class="caption text-muted">Email can’t be changed. Governed by Azure Active Directory.</p>
+      </div>
+    </div>
+
+    <dl class="facts">
+      @for (fact of facts; track fact.label) {
+        <div class="fact">
+          <dt class="micro">{{ fact.label }}</dt>
+          <dd class="label">
+            @if (fact.icon) {
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="fact.icon" /></svg>
+            } @else {
+              <span class="fact-dot"></span>
+            }
+            {{ fact.value }}
+          </dd>
+        </div>
+      }
+    </dl>
+
+    <div class="form-actions">
+      <button class="ghost" type="button">Cancel</button>
+      <button class="btn btn-primary" type="submit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.save" /></svg>
+        Save Changes
+      </button>
+    </div>
+  </form>
+
+  <!-- Change password -->
+  <form class="panel" (submit)="onSubmit($event)" novalidate>
+    <header class="panel-head">
+      <div>
+        <h2 class="panel-title">Change Password</h2>
+        <p class="caption text-muted">Update your cryptographic authentication passkey.</p>
+      </div>
+      <span class="badge-chip micro">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.clock" /></svg>
+        Last rotated: 42 days ago
+      </span>
+    </header>
+
+    <div class="stack">
+      <div class="field-row">
+        <label class="field-label" for="current-password">Current Password</label>
+        <a class="link micro" routerLink="/forgot-password">Forgot password?</a>
+      </div>
+      <app-password-input
+        inputId="current-password"
+        name="currentPassword"
+        autocomplete="current-password"
+        [startIcon]="icons.key"
+      />
+    </div>
+
+    <div class="grid-2">
+      <div class="stack">
+        <label class="field-label" for="new-password">New Password</label>
+        <app-password-input
+          inputId="new-password"
+          name="newPassword"
+          autocomplete="new-password"
+          [startIcon]="icons.key"
+        />
+
+        <div class="strength">
+          <div class="strength-head">
+            <span class="micro text-muted">Complexity Entropy:</span>
+            <span class="strength-value micro"><span class="strength-dot"></span>{{ strength.label }}</span>
+          </div>
+          <div class="bars">
+            @for (level of strength.levels; track level; let i = $index) {
+              <span [class.on]="i < strength.active"></span>
+            }
+          </div>
+          <div class="levels micro">
+            @for (level of strength.levels; track level) {
+              <span>{{ level }}</span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="field-row">
+          <label class="field-label" for="confirm-password">Confirm New Password</label>
+          <span class="accent-note micro">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.check" /></svg>
+            Matches
+          </span>
+        </div>
+        <div class="input-wrap">
+          <input
+            class="input has-start"
+            id="confirm-password"
+            name="confirmPassword"
+            type="password"
+            autocomplete="new-password"
+            placeholder="••••••••••"
+          />
+          <svg class="ic input-icon start" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.key" /></svg>
+          <svg class="ic input-icon matched" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.checkCircle" /></svg>
+        </div>
+
+        <ul class="rules">
+          @for (rule of rules; track rule) {
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.check" /></svg>
+              {{ rule }}
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.shieldCheck" /></svg>
+        Update Password
+      </button>
+    </div>
+  </form>
+
+  <!-- Danger zone -->
+  <section class="panel danger-zone">
+    <div class="danger-main">
+      <span class="danger-icon">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.warning" /></svg>
+      </span>
+      <div>
+        <div class="danger-title">
+          <h3 class="h4">Delete Account</h3>
+          <span class="irreversible">Irreversible</span>
+        </div>
+        <p class="body-sm text-muted">
+          This permanently deletes your account and history. All cryptographic keys, threat
+          analysis reports, and authorization nodes will be decommissioned immediately.
+        </p>
+      </div>
+    </div>
+    <button class="delete" type="button">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.trash" /></svg>
+      Delete Account
+    </button>
+  </section>
+</div>

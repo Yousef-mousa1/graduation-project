@@ -1,0 +1,132 @@
+<div class="history">
+  <header class="page-head">
+    <div class="titles">
+      <p class="eyebrow">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.shieldCheck" /></svg>
+        Security Audit Trail
+      </p>
+      <h1 class="page-title">Your History</h1>
+      <p class="body-sm text-muted">
+        Review and audit all previous threat detections, breach scans, and file checks.
+      </p>
+    </div>
+
+    <div class="head-actions">
+      <div class="retention">
+        <div>
+          <p class="micro retention-label">Retention scope</p>
+          <p class="retention-value">90 Days Active Telemetry</p>
+        </div>
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.sliders" /></svg>
+      </div>
+      <button class="export" type="button">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.download" /></svg>
+        Export Log
+      </button>
+    </div>
+  </header>
+
+  <ul class="stats">
+    @for (stat of stats; track stat.label) {
+      <li class="stat" [attr.data-tone]="stat.tone">
+        <div>
+          <p class="micro stat-label">{{ stat.label }}</p>
+          <p class="stat-value">{{ stat.value }}</p>
+        </div>
+        <span class="stat-icon">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="stat.icon" /></svg>
+        </span>
+      </li>
+    }
+  </ul>
+
+  <div class="toolbar">
+    <div class="input-wrap search">
+      <input
+        class="input"
+        type="search"
+        name="search"
+        autocomplete="off"
+        aria-label="Search history"
+        placeholder="Search history by keyword, filename, or URL..."
+      />
+      <svg class="ic input-icon" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.search" /></svg>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter by type">
+      @for (filter of filters; track filter) {
+        <button class="filter" type="button" [class.active]="$first" [attr.aria-pressed]="$first">
+          {{ filter }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <section class="table-card">
+    <div class="scroll-x">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Item</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col" class="end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (record of records; track record.item) {
+            <tr>
+              <td>
+                <span class="kind" [attr.data-kind]="record.kind">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                    <path [attr.d]="kinds[record.kind].icon" />
+                  </svg>
+                  {{ kinds[record.kind].label }}
+                </span>
+              </td>
+              <td>
+                <div class="item">
+                  <span class="item-name" [class.mono]="record.kind === 'link'">{{ record.item }}</span>
+                  @if (record.badge) {
+                    <span class="tag" [class.danger]="record.badge.danger">{{ record.badge.label }}</span>
+                  }
+                </div>
+              </td>
+              <td class="date">{{ record.date }}</td>
+              <td>
+                <span class="status" [attr.data-status]="record.status">
+                  <span class="status-dot"></span>{{ record.status }}
+                </span>
+              </td>
+              <td class="end">
+                <button class="more" type="button" aria-label="Row options">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.moreVertical" /></svg>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="pager">
+      <p class="caption pager-info">
+        Showing <strong>1-{{ records.length }}</strong> of <strong>{{ totalScans }}</strong> scans
+      </p>
+      <div class="pages">
+        <button class="page" type="button" aria-label="Previous page">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.chevronLeft" /></svg>
+        </button>
+        @for (page of pages; track page) {
+          <button class="page" type="button" [class.active]="$first" [attr.aria-current]="$first ? 'page' : null">
+            {{ page }}
+          </button>
+        }
+        <button class="page" type="button" aria-label="Next page">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.chevronRight" /></svg>
+        </button>
+      </div>
+    </footer>
+  </section>
+</div>

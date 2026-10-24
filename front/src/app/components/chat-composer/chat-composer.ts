@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { ICONS } from '../../model/icons';
 
@@ -9,6 +9,9 @@ import { ICONS } from '../../model/icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChatComposerComponent {
+  readonly placeholder = input('Paste text, a link, or ask anything...');
+  readonly note = input('SecureIQ can make mistakes. Verify important results.');
+
   protected readonly icons = ICONS;
 
   /** Visual only for now. Will send the message once the backend is connected. */

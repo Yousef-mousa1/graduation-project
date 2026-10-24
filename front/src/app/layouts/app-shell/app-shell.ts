@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { UserMenuComponent } from '../../components/user-menu/user-menu';
 import { ICONS } from '../../model/icons';
@@ -7,7 +7,7 @@ import { PLACEHOLDER_USER, RECENT_CHATS } from './app-shell-content';
 
 @Component({
   selector: 'app-shell',
-  imports: [RouterLink, RouterOutlet, UserMenuComponent],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, UserMenuComponent],
   templateUrl: './app-shell.html',
   styleUrl: './app-shell.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

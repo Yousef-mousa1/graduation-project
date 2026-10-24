@@ -1,0 +1,227 @@
+<section class="analysis">
+  <header class="agent-bar">
+    <div class="agent">
+      <span class="agent-icon">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.shieldCheck" /></svg>
+        <span class="agent-dot"></span>
+      </span>
+      <div>
+        <div class="agent-title">
+          <h1 class="h4">SecureIQ Assistant</h1>
+          <span class="online"><span class="online-dot"></span>Online</span>
+        </div>
+        <p class="caption text-muted">Sandboxed Telemetry • Engine v4.18.2</p>
+      </div>
+      <span class="session label">
+        <span class="session-key">SESSION:</span> #SEC-9842-TRIAGE
+      </span>
+    </div>
+
+    <div class="agent-actions">
+      <div class="status">
+        <span class="micro status-label">Analysis status</span>
+        <span class="status-value">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.warning" /></svg>
+          Action Required
+        </span>
+      </div>
+      <button class="export" type="button">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.download" /></svg>
+        Export JSON
+      </button>
+    </div>
+  </header>
+
+  <div class="scroll">
+    <div class="canvas">
+      <div class="timeline">
+        <span class="rule"></span>
+        <span class="stamp micro">Today • 14:32:08 UTC</span>
+        <span class="rule"></span>
+      </div>
+
+      <!-- User turn: uploaded file -->
+      <div class="user-turn">
+        <p class="meta micro">Alex Mercer <span class="dot">•</span> 14:31</p>
+        <div class="attachment">
+          <span class="file-icon">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.fileText" /></svg>
+          </span>
+          <div class="file-info">
+            <p class="file-name">
+              invoice_urgent.pdf
+              <svg class="ic verified" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.checkCircle" /></svg>
+            </p>
+            <p class="caption text-muted">
+              240 KB • <span class="hash">sha256: 4f9d...e81c</span>
+            </p>
+          </div>
+          <svg class="ic file-end" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.fileText" /></svg>
+        </div>
+        <p class="caption faint">Automated Sandbox Ingestion Finished</p>
+      </div>
+
+      <!-- Bot turn: report -->
+      <div class="bot-turn">
+        <span class="bot-avatar">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.cpu" /></svg>
+        </span>
+
+        <div class="bot-col">
+          <p class="meta micro">
+            <span class="core">SecureIQ Cognitive Core</span>
+            <span class="dot">•</span> 14:32
+            <span class="model">ML-RISK-V2</span>
+          </p>
+
+          <article class="report">
+            <header class="report-head">
+              <div class="report-id">
+                <span class="report-icon">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.warning" /></svg>
+                </span>
+                <div>
+                  <h2 class="h4">Threat Analysis Report</h2>
+                  <p class="caption text-muted">Heuristic evaluation and sandbox behavioral traces</p>
+                </div>
+              </div>
+              <span class="verdict"><span class="ping"></span>Suspicious</span>
+            </header>
+
+            <div class="report-body">
+              <figure class="gauge">
+                <div class="gauge-ring" role="img" [attr.aria-label]="'Risk score ' + score + ' out of 100'">
+                  <svg class="gauge-svg" viewBox="0 0 176 176" aria-hidden="true">
+                    <circle class="gauge-track" cx="88" cy="88" [attr.r]="gaugeRadius" />
+                    <circle
+                      class="gauge-arc"
+                      cx="88"
+                      cy="88"
+                      [attr.r]="gaugeRadius"
+                      [attr.stroke-dasharray]="gaugeDash"
+                      transform="rotate(-90 88 88)"
+                    />
+                  </svg>
+                  <div class="gauge-label">
+                    <p class="score"><strong>{{ score }}</strong><span>/100</span></p>
+                    <p class="risk micro">High risk</p>
+                  </div>
+                </div>
+                <figcaption class="caption text-muted">Severity Index: Critical</figcaption>
+              </figure>
+
+              <div class="summary">
+                <div class="hazard">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.warning" /></svg>
+                  <div>
+                    <h3 class="h4">Immediate Hazard Detected</h3>
+                    <p class="body-sm">
+                      This file contains an embedded link to a known phishing domain attempting
+                      credential harvesting via forced proxy tunneling.
+                    </p>
+                  </div>
+                </div>
+
+                <dl class="attrs">
+                  @for (attr of attributes; track attr.label) {
+                    <div class="attr">
+                      <dt class="micro">{{ attr.label }}</dt>
+                      <dd class="label" [attr.data-tone]="attr.tone">{{ attr.value }}</dd>
+                    </div>
+                  }
+                </dl>
+              </div>
+            </div>
+
+            <div class="panels">
+              <details class="panel" open>
+                <summary>
+                  <span class="panel-title">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.shield" /></svg>
+                    <span class="h4">Detected Issues</span>
+                    <span class="count micro">3 Vulnerabilities</span>
+                  </span>
+                  <svg class="ic chevron" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.chevronDown" /></svg>
+                </summary>
+                <ul class="panel-body issues">
+                  @for (issue of issues; track issue.title) {
+                    <li class="issue">
+                      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="issue.icon" /></svg>
+                      <div>
+                        <p class="label">{{ issue.title }}</p>
+                        <p class="detail" [class.highlight]="issue.highlight">{{ issue.detail }}</p>
+                      </div>
+                    </li>
+                  }
+                </ul>
+              </details>
+
+              <details class="panel" open>
+                <summary>
+                  <span class="panel-title">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.info" /></svg>
+                    <span class="h4">What this means</span>
+                  </span>
+                  <svg class="ic chevron" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.chevronDown" /></svg>
+                </summary>
+                <div class="panel-body">
+                  <p class="inset body-sm">
+                    Opening this attachment may trigger unauthorized credential theft or credential
+                    harvesting in your active browser session. If permitted to establish outbound
+                    egress, the macro executes background tokens retrieval from current Active
+                    Directory / Okta cookies.
+                  </p>
+                </div>
+              </details>
+
+              <details class="panel" open>
+                <summary>
+                  <span class="panel-title">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.checkCircle" /></svg>
+                    <span class="h4">Recommended Actions</span>
+                  </span>
+                  <svg class="ic chevron" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.chevronDown" /></svg>
+                </summary>
+                <div class="panel-body">
+                  <div class="inset advice">
+                    <p class="advice-title">
+                      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.xCircle" /></svg>
+                      Do not enable macros or click hyperlinks.
+                    </p>
+                    <p class="body-sm text-muted">
+                      Quarantine and purge this file immediately from all corporate endpoints.
+                      Invalidate any session cookies that shared domain scope with the user’s desktop
+                      client over the past 30 minutes.
+                    </p>
+                  </div>
+                </div>
+              </details>
+            </div>
+
+            <footer class="deck">
+              <p class="rule-note caption text-muted">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.shieldCheck" /></svg>
+                Automated SOC Triage Rule: <strong>Auto-Quarantine</strong>
+              </p>
+              <div class="deck-actions">
+                <button class="btn-delete" type="button">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.trash" /></svg>
+                  Delete File
+                </button>
+                <button class="btn-follow" type="button">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.messageSquare" /></svg>
+                  Ask a Follow-up
+                </button>
+              </div>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-chat-composer
+    placeholder="Ask a follow-up question or paste another file..."
+    note="SecureIQ can make mistakes. Verify important results with standard SOC playbook."
+  />
+</section>

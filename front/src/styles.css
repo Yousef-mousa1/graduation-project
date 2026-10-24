@@ -442,3 +442,12 @@ svg {
 .btn-block {
   width: 100%;
 }
+/* ---------- Input with a leading icon ---------- */
+.input.has-start {
+  padding-left: 44px;
+}
+
+.input-icon.start {
+  left: 16px;
+  right: auto;
+}

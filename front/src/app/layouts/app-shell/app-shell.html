@@ -16,14 +16,18 @@
         <ul>
           @for (chat of recentChats; track chat.title) {
             <li>
-              <button
-                class="chat-link"
-                type="button"
-                [class.active]="chat.active"
-                [attr.aria-current]="chat.active ? 'true' : null"
-              >
-                {{ chat.title }}
-              </button>
+              @if (chat.path) {
+                <a
+                  class="chat-link"
+                  [routerLink]="chat.path"
+                  routerLinkActive="active"
+                  ariaCurrentWhenActive="page"
+                >
+                  {{ chat.title }}
+                </a>
+              } @else {
+                <button class="chat-link" type="button">{{ chat.title }}</button>
+              }
             </li>
           }
         </ul>
@@ -31,7 +35,7 @@
     </div>
 
     <div class="sidebar-foot">
-      <a class="history-link" routerLink="/history">
+      <a class="history-link" routerLink="/history" routerLinkActive="active">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.history" /></svg>
         History
       </a>

@@ -1,6 +1,7 @@
 export interface ChatSummary {
   title: string;
-  active?: boolean;
+  /** Route of the conversation. Chats without a path are not clickable yet. */
+  path?: string;
 }
 
 export interface TelemetryStat {

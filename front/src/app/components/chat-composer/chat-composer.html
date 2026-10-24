@@ -10,7 +10,7 @@
       name="message"
       autocomplete="off"
       aria-label="Message"
-      placeholder="Paste text, a link, or ask anything..."
+      [placeholder]="placeholder()"
     />
 
     <div class="tools">
@@ -28,5 +28,8 @@
     </button>
   </form>
 
-  <p class="caption note">SecureIQ can make mistakes. Verify important results.</p>
+  <p class="caption note">
+    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.info" /></svg>
+    {{ note() }}
+  </p>
 </div>
